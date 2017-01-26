@@ -25,13 +25,3 @@
         (ELSE (+ 0 (sum-up-numbers-simple (CDR L))))
            )
       )
-
-(DEFINE (sum-up-numbers-general L)
-        (COND
-        ((NULL? L) 0)
-        ((NUMBER? (CAR L)) (+ (CAR L) (sum-up-numbers-general (CDR L))))
-        ((LIST? (CAR L)) (+ (sum-up-numbers-general (CAR L)) (sum-up-numbers-general (CDR L))))
-        (ELSE (+ 0 (sum-up-numbers-simple (CDR L)))
-           )
-      )
-)
