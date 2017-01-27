@@ -42,7 +42,7 @@
         ((NULL? (CDR L)) (CAR L))
         ((NUMBER? (CAR L)) (MIN (CAR L) (get-min (CDR L))))
         (ELSE
-        (MIN (get-min (CDR L)))
+        (get-min (CDR L))
         )))
 
 (DEFINE (min-above-min L1 L2)
