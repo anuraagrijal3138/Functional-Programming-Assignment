@@ -10,7 +10,7 @@
                                )
                               
                   
-                     (append (reverse-general (CDR L)) ;else case
+                     (append (reverse-general (CDR L)) ;not nested list
                              (list (CAR L))            
                              )
                       )
@@ -41,9 +41,9 @@
 ;Supporting function to get min value in a list
 (DEFINE (get-min L)
         (COND
-        ((NULL? (CDR L)) (CAR L))
+        ((NULL? (CDR L)) (CAR L))  ;exit case
         (ELSE
-        (MIN (CAR L) (get-min (CDR L)))
+        (MIN (CAR L) (get-min (CDR L))) ;recursion finding the minimum from a list
         )))
 
 ;supporting function to ignore letters
@@ -52,7 +52,7 @@
         ((NULL? L) '())  ;case to break recursion
         ((NUMBER? (CAR L)) (CONS (CAR L) (ignore-char (CDR L))))
         (ELSE
-        (ignore-char (CDR L)))
+        (ignore-char (CDR L))) ;if letter
         ))
 
 ;supporting function that returns a list of numbers in a list which are greater than a given number
@@ -61,15 +61,15 @@
         ((NULL? L2) '())  ;case to break recursion
         ((> (CAR L2) L1) (CONS (CAR L2) (great-list L1 (CDR L2))))
         (ELSE
-        (great-list L1 (CDR L2))
+        (great-list L1 (CDR L2)) ;if (CAR L2) < L1
         )))
 
 ;main function min-above-min
 (DEFINE (min-above-min L1 L2)
         (COND
         ((NULL? (ignore-char L1)) #F) ;case to break recursion
-        ((NULL? L2) (get-min (ignore-char L1)))
-        ((NULL? (great-list (get-min (ignore-char L2)) (ignore-char L1))) #F)
+        ((NULL? L2) (get-min (ignore-char L1))) ;if L2 null
+        ((NULL? (great-list (get-min (ignore-char L2)) (ignore-char L1))) #F)   ;if no value in L1 larger than smallest in L2
         (ELSE
-        (get-min(great-list (get-min (ignore-char L2)) (ignore-char L1)))
+        (get-min(great-list (get-min (ignore-char L2)) (ignore-char L1))) 
         )))
