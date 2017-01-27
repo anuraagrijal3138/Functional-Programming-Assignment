@@ -18,17 +18,19 @@
              )
           )
 
+;Function to calculate sum, car and recursive cdr, ignore nested list
 (DEFINE (sum-up-numbers-simple L)
         (COND
-        ((NULL? L) 0)
+        ((NULL? L) 0)    ;case to break recursion
         ((NUMBER? (CAR L)) (+ (CAR L) (sum-up-numbers-simple (CDR L)))) 
         (ELSE (+ 0 (sum-up-numbers-simple (CDR L))))
            )
       )
 
+;Function to calculate sum, car and recursive cdr 
 (DEFINE (sum-up-numbers-general L)
         (COND
-        ((NULL? L) 0)
+        ((NULL? L) 0)   ;case to break recursion
         ((NUMBER? (CAR L)) (+ (CAR L) (sum-up-numbers-general (CDR L))))
         ((LIST? (CAR L)) (+ (sum-up-numbers-general (CAR L)) (sum-up-numbers-general (CDR L))))
         (ELSE (+ 0 (sum-up-numbers-simple (CDR L)))
@@ -47,7 +49,7 @@
 ;supporting function to ignore letters
 (DEFINE (ignore-char L)
         (COND
-        ((NULL? L) '())
+        ((NULL? L) '())  ;case to break recursion
         ((NUMBER? (CAR L)) (CONS (CAR L) (ignore-char (CDR L))))
         (ELSE
         (ignore-char (CDR L)))
@@ -56,7 +58,7 @@
 ;supporting function that returns a list of numbers in a list which are greater than a given number
 (DEFINE (great-list L1 L2)
         (COND
-        ((NULL? L2) '())
+        ((NULL? L2) '())  ;case to break recursion
         ((> (CAR L2) L1) (CONS (CAR L2) (great-list L1 (CDR L2))))
         (ELSE
         (great-list L1 (CDR L2))
@@ -65,7 +67,7 @@
 ;main function min-above-min
 (DEFINE (min-above-min L1 L2)
         (COND
-        ((NULL? (ignore-char L1)) #F)
+        ((NULL? (ignore-char L1)) #F) ;case to break recursion
         ((NULL? L2) (get-min (ignore-char L1)))
         ((NULL? (great-list (get-min (ignore-char L2)) (ignore-char L1))) #F)
         (ELSE
