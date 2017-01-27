@@ -40,10 +40,10 @@
 (DEFINE (get-min L)
         (COND
         ((NULL? (CDR L)) (CAR L))
-        ((NUMBER? (CAR L)) (MIN (CAR L) (get-min (CDR L))))
         (ELSE
-        (get-min (CDR L))
+        (MIN (CAR L) (get-min (CDR L)))
         )))
+
 ;supporting function to ignore letters
 (DEFINE (ignore-char L)
         (COND
