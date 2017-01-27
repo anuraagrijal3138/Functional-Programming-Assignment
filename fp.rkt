@@ -67,6 +67,7 @@
         (COND
         ((NULL? (ignore-char L1)) #F)
         ((NULL? L2) (get-min (ignore-char L1)))
+        ((NULL? (great-list (get-min (ignore-char L2)) (ignore-char L1))) #F)
         (ELSE
         (get-min(great-list (get-min (ignore-char L2)) (ignore-char L1)))
         )))
