@@ -33,5 +33,21 @@
         ((LIST? (CAR L)) (+ (sum-up-numbers-general (CAR L)) (sum-up-numbers-general (CDR L))))
         (ELSE (+ 0 (sum-up-numbers-simple (CDR L)))
            )
+        )
       )
-)
+
+;Supporting function to get min value in a list
+(DEFINE (get-min L)
+        (COND
+        ((NULL? (CDR L)) (CAR L))
+        ((NUMBER? (CAR L)) (MIN (CAR L) (get-min (CDR L))))
+        (ELSE
+        (MIN (get-min (CDR L)))
+        )))
+
+(DEFINE (min-above-min L1 L2)
+         (COND
+         
+         
+        )
+        )
