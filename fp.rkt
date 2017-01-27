@@ -44,10 +44,12 @@
         (ELSE
         (get-min (CDR L))
         )))
+;supporting function to ignore letters
+(DEFINE (ignore-char L)
+        (COND
+        ((NULL? L) '())
+        ((NUMBER? (CAR L)) (CONS (CAR L) (ignore-char (CDR L))))
+        (ELSE
+        (ignore-char (CDR L)))
+        ))
 
-(DEFINE (min-above-min L1 L2)
-         (COND
-         
-         
-        )
-        )
