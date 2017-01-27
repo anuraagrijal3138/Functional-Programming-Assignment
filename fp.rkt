@@ -56,9 +56,17 @@
 ;supporting function that returns a list of numbers in a list which are greater than a given number
 (DEFINE (great-list L1 L2)
         (COND
-        ((NULL? (CAR L2)) '())
+        ((NULL? L2) '())
         ((> (CAR L2) L1) (CONS (CAR L2) (great-list L1 (CDR L2))))
         (ELSE
         (great-list L1 (CDR L2))
         )))
 
+;main function min-above-min
+(DEFINE (min-above-min L1 L2)
+        (COND
+        ((NULL? (ignore-char L1)) #F)
+        ((NULL? L2) (get-min (ignore-char L1)))
+        (ELSE
+        (get-min(great-list (get-min (ignore-char L2)) (ignore-char L1)))
+        )))
