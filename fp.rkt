@@ -23,7 +23,7 @@
         (COND
         ((NULL? L) 0)    ;case to break recursion
         ((NUMBER? (CAR L)) (+ (CAR L) (sum-up-numbers-simple (CDR L)))) 
-        (ELSE (+ 0 (sum-up-numbers-simple (CDR L))))
+        (ELSE (sum-up-numbers-simple (CDR L)))
            )
       )
 
@@ -33,7 +33,7 @@
         ((NULL? L) 0)   ;case to break recursion
         ((NUMBER? (CAR L)) (+ (CAR L) (sum-up-numbers-general (CDR L))))
         ((LIST? (CAR L)) (+ (sum-up-numbers-general (CAR L)) (sum-up-numbers-general (CDR L))))
-        (ELSE (+ 0 (sum-up-numbers-simple (CDR L)))
+        (ELSE (sum-up-numbers-general (CDR L))
            )
         )
       )
