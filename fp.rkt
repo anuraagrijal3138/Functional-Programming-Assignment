@@ -53,3 +53,12 @@
         (ignore-char (CDR L)))
         ))
 
+;supporting function that returns a list of numbers in a list which are greater than a given number
+(DEFINE (great-list L1 L2)
+        (COND
+        ((NULL? (CAR L2)) '())
+        ((> (CAR L2) L1) (CONS (CAR L2) (great-list L1 (CDR L2))))
+        (ELSE
+        (great-list L1 (CDR L2))
+        )))
+
